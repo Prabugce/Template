@@ -1,0 +1,186 @@
+body
+{
+font-family:sans-serif;
+}
+
+
+*
+{
+margin:0;
+}
+
+.bg_image
+{   
+	background-image: url(../Temp/Images/bg.jpg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    height: 256px; 
+} 
+
+.navigation
+{ 
+    position: relative;
+    width: 100%;
+    height: 55px;
+    background: white;
+    top: 30px;
+}
+ 
+#v1
+{
+color:red;
+}
+
+.navigation_list
+{
+display:flex;
+}
+
+.pos
+{
+  left: 337px;
+    width: 630px;
+    margin: 19px 0px 0 135px;
+}
+
+.pos1
+{
+  left: 337px; 
+    margin: 19px 0px 0 135px;
+}
+
+.image1
+{
+margin: 9px 0 0 56px;
+}
+
+.image2
+{
+margin: 9px 0 0 56px;
+}
+
+li a
+{
+color:	rgb(0, 0, 0);
+font-weight:bold;
+font-size:12px;
+}
+	
+.pos, li a
+{
+float: left;
+list-style-type:none;
+font-size:12px;
+}
+.value
+{
+padding: 4px 60px 0 0px;
+float:left; 
+}
+
+a
+{
+	text-decoration:none;
+
+}
+.head
+{
+    text-align: center;
+    font-size: 45px;
+    margin: 30px 0 0 0;
+}
+
+.number
+{
+font-weight:normal;
+}
+
+ 
+.lists li a
+{
+font-style:italic;
+color:white;
+font-weight:normal;
+font-size:15px;
+padding:0; 
+}
+
+.lists
+{
+margin:10px 0  0 42%;
+}
+
+.list1
+{
+	list-style-type:none; 
+	float:left;
+	padding:0 10px 0 0;
+}
+
+.up {
+  transform: rotate(-135deg); 
+}
+
+i {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.boxes
+{
+	
+    position: absolute;
+    width: 30px;
+    height: 45px;
+    background: red;
+	margin:-20px 0 0 0;
+}
+.box1
+{ 
+    padding:  7px;
+    color: wheat;
+    background: red;
+} 
+.box2
+{ 
+    padding:  7px;
+    color: white;
+    background: black;
+} 
+
+.brands
+{ 
+float:left;
+margin:4.5em 24%;
+}
+ .brands div
+ {
+	  
+	  width:95px;
+	  height:13px; 
+	  background:black;
+	  float:left;
+	  padding: 6px 0 5px 0;
+	  margin:5px 0 5px 5px;
+	  text-align:center;
+	  font-size:11px; 
+	  font-weight:bold;
+	 
+	  
+ } 
+  
+div > a{
+	 color:white;
+}
+.mainsection
+{
+position:relative;
+}
+ 
+div.brands, div a:nth-child(4)
+{
+color:gray;
+}
+ 
