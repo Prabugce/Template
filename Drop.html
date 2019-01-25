@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DropDown</title>
+<style>
+ .text_center
+ {
+	 
+	 display:block;
+	 text-align:center;
+	 margin:40px 0 0 0;
+ }
+ 
+ h2
+ {
+	 text-align:center;
+	 margin:10px 0 0 0;
+ }
+ .border
+ {   
+	margin: 8px 0 0 20px;
+    border: 1px solid;
+    padding: 0px 8px;
+    width: 35%;
+	
+ }
+ 
+ #result
+ {
+	 margin:50px 0 0 0;
+ }
+
+</style>
+<link href="../Dropdown/Drop.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body> 
+
+<h2>Sort Employee Age in DropDown list</h2>
+ <div class="text_center">
+	 <select id="k1" onchange="check()">
+		<option>Select Age</option>
+	  <option value="Age > 25">Age > 25</option>
+	  <option value="Age < 30">Age < 30</option>
+	  <option value="Age > 40">Age > 40</option>
+	  <option value="Age < 45">Age < 45</option>
+	</select> 
+
+ </div>
+
+<div class="box" id="result">
+	 
+</div>
+
+
+<script> 
+
+function check()
+{   
+	document.getElementById("result").innerHTML = "";
+  
+var data1= [
+			{"ID":"Emp001","firstName":"John","Age":"22"}, 
+			{"ID":"Emp002","firstName":"Anna","Age":"56"}, 
+			{"ID":"Emp003","firstName":"Mani","Age":"34"},
+			{"ID":"Emp004","firstName":"Raj","Age":"48"},
+			{"ID":"Emp005","firstName":"Babu","Age":"26"},
+			{"ID":"Emp006","firstName":"Kavin","Age":"39"},
+			{"ID":"Emp007","firstName":"Arun","Age":"41"},
+			{"ID":"Emp008","firstName":"Rockey","Age":"40"},
+			{"ID":"Emp009","firstName":"Bala","Age":"29"},
+			{"ID":"Emp010","firstName":"Manoj","Age":"46"}
+					];
+		  
+		  
+		  var input= document.getElementById("k1").value;
+		  
+		  
+		  if(input=="Age > 25")
+		  {
+				fun1();
+		  }
+		   else if(input=="Age < 30")
+		  {
+				fun2();
+		  }
+		  else if(input=="Age > 40")
+		  {
+				fun3();
+		  }
+		  
+		  else if(input=="Age < 45")
+		  {
+				fun4();
+		  }
+		   var i; 
+		   var element;
+		  
+		   function fun1(){
+					for(i=0;i<data1.length;i++)
+					{ 
+							
+							
+							if(data1[i].Age>25)
+							{
+							    element = document.createElement("div");
+								element.className+=	"border";
+								element.appendChild(document.createTextNode("Employee ID :" + data1[i].ID +" "+ "Employee Age :" +  data1[i].Age+ " " + "Employee firstName :"+ data1[i].firstName));
+								document.getElementById('result').appendChild(element);
+								
+							}
+							else{
+							 
+							}
+							 
+					}
+					
+					 
+			}
+			 function fun2(){
+					for(i=0;i<data1.length;i++)
+					{ 
+						 	
+							if(data1[i].Age<30)
+							{
+							    element = document.createElement("div");
+								element.className+=	"border";
+								element.appendChild(document.createTextNode("Employee ID :" + data1[i].ID +" "+ "Employee Age :" +  data1[i].Age+ " " + "Employee firstName :"+ data1[i].firstName));
+								document.getElementById('result').appendChild(element);
+								
+							}
+							else{
+
+							}
+							 
+					}
+					
+					 
+			}
+			
+			function fun3(){
+					for(i=0;i<data1.length;i++)
+					{ 
+							
+							
+							if(data1[i].Age>40)
+							{
+							     element = document.createElement("div");
+								element.className+=	"border";
+								element.appendChild(document.createTextNode("Employee ID :" + data1[i].ID +" "+ "Employee Age :" +  data1[i].Age+ " " + "Employee firstName :"+ data1[i].firstName));
+								document.getElementById('result').appendChild(element);
+								
+							}
+							else{
+							 
+							}
+							 
+					}
+					
+					 
+			}
+			
+			function fun4(){
+					for(i=0;i<data1.length;i++)
+					{ 
+							
+							
+							if(data1[i].Age <40)
+							{
+							     element = document.createElement("div");
+								element.className+=	"border";
+								element.appendChild(document.createTextNode("Employee ID :" + data1[i].ID +" "+ "Employee Age :" +  data1[i].Age+ " " + "Employee firstName :"+ data1[i].firstName));
+								document.getElementById('result').appendChild(element);
+								
+							}
+							else{
+							 
+							}
+							 
+					}
+					
+					 
+			}
+		 
+
+}
+
+  
+</script>
+</body>
+</html>
