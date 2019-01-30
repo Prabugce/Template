@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DropDown</title>
+<style>
+ .text_center
+ {
+	  
+	 text-align:center;
+	 margin:40px 0 0 0; 
+ }
+  
+ 
+ h2
+ {
+	 text-align:center;
+	 margin:10px 0 0 0;
+ }
+ 
+ 
+ #result
+ {
+	 margin:50px 0 0 0;
+ }
+
+ .popup{
+   position:fixed;
+	left:50%;  
+	margin-top:7%;
+	cursor:pointer;
+}
+
+.popup .wrapper{
+	position: relative;
+    left: -50%;
+    width: 284px;
+    height: 90px;
+    color: white;
+    background: #9E9E9E;
+    text-align: center;
+    padding: 17px 5px;
+    font-size: 16px;
+    box-shadow: 0px 0px 9px red;
+} 
+
+.close1
+{
+	border: 1px solid white;
+    width: 40px;
+    margin: 13px auto;
+    background: #E91E63;
+    border-radius: 3px;
+}
+
+.table1
+{ 
+margin:0 0 0 30px;
+width:40%;
+text-transform:capitalize;
+border-collapse:collapse;
+
+}
+tr, td
+{
+border:1px solid;
+padding:0 20px !important;
+}
+
+tr:first-child
+{
+font-weight:bold;
+}
+
+</style>
+<link href="../Dropdown/Drop.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body> 
+
+<h2>Sort Employee Age in DropDown list</h2>
+ <div class="text_center">
+	  
+		
+	Please Enter Employee name <input type="text" id="k2"/>
+	<button type="button" id="search">Search</button>
+ </div>
+
+ 
+			<div id="result">
+			
+			</div>
+			
+ <div class="popup" id="error" style="display:none;">
+	<div class="wrapper" id="text2">
+       Employee name did't match in our List
+	   <div class="close1">Ok</div>
+    </div>
+</div>
+
+<script>  
+var data1= [
+			{"id":"emp001","firstName":"John","age":"22","Department":"College staff"}, 
+			{"id":"emp002","firstName":"Anna","age":"56","Department":"School staff"}, 
+			{"id":"emp003","firstName":"Mani","age":"34","Department":"Government staff"},
+			{"id":"emp004","firstName":"Raj","age":"48","Department":"Driver"},
+			{"id":"emp005","firstName":"Babu","age":"26","Department":"Doctor"},
+			{"id":"emp006","firstName":"Kavin","age":"39","Department":"media staff"},
+			{"id":"emp007","firstName":"Arun","age":"41","Department":"Actor"},
+			{"id":"emp008","firstName":"Rockey","age":"40","Department":"Postman"},
+			{"id":"emp009","firstName":"Bala","age":"29","Department":"Police"},
+			{"id":"emp010","firstName":"Manoj","age":"46","Department":"Mechnical"}
+					];
+var tables,trs;
+$(document).ready(function(){ 
+$("#search").on("click",function(){
+var values= $("#k2").val();
+		if(values!="")
+		{		 if(values[0]==values[0].toLowerCase())
+					{ 
+					 values[0]= values[0].toUpperCase();
+					 console.log(values[0]);
+					}
+					
+				 console.log(values);
+				 
+				$("#result").text("");
+				tables="<table>";   
+				tables+="<tr>";
+				
+				
+				var keyss= Object.keys(data1[0]); 
+			
+				for(var j=0;j<keyss.length;j++)
+				{
+					tables += '<td>' + keyss[j] + '</td>';
+				}
+				tables+="</tr>";
+			
+				var calc=false;
+				for(var i=0;i<data1.length;i++)
+				{  
+						
+						var names= data1[i].firstName;  
+						
+					 if(names.indexOf(values)!=-1)
+					  {		 tables += '<tr>';
+							  tables += '<td>' + data1[i].id + '</td>';
+							  tables += '<td>' + data1[i].firstName + '</td>';
+							  tables += '<td>' + data1[i].age + '</td>';
+							  tables += '<td>' + data1[i].Department + '</td>';
+							  tables += "</tr>";
+							  calc=true;
+					  }
+				  
+				}
+					$("#result").append(tables);
+					$("table").addClass("table1");
+					
+				if(!calc)
+				{
+					var parentss1 = $('#text2').children();
+					$('#text2').text("Not Found data in our List").append(parentss1); 
+					$("#error").show();
+					$("table").hide();
+				}
+		}
+
+		else
+		{
+			var parentss = $('#text2').children();
+			$('#text2').text("Please Enter Character").append(parentss); 
+			$("#error").show();
+		}
+
+});
+ 
+
+
+
+$(".popup").on("click",".close1",function(){
+$(".popup").hide();
+});
+ 
+
+
+
+
+});
+
+  
+</script>
+</body>
+</html>
