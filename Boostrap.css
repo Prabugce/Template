@@ -1,0 +1,64 @@
+ h3
+ {
+	 text-align:center;
+	 padding:40px 0 0 0;
+	 margin-top:40px !important;
+	 color:#636363;
+ }
+ 
+ h3,p 
+ {
+	text-align:center; 
+	 padding:0 0 10px 0;
+	 margin-bottom:15px !important; 
+	font-size:16px;
+	font-weight:bold;
+ }
+ 
+ .border
+ {
+	 border: 1px solid #9E9E9E;
+    margin: 10px 0 0 0; 
+	border-radius:5px;
+	background:#9E9E9E;
+	height:500px ;
+ }
+ 
+  .border1
+ {
+    border: 1px solid #9E9E9E;
+    border-left: 2px solid wheat;
+    margin: 10px 0 0 0;
+    border-radius: 5px;
+    background: #9E9E9E;
+    height: 500px;
+ }
+ 
+ .top_1
+ {
+margin:23px 0 0 0;
+ }
+ 
+  .top_4
+ {
+margin:10px 0 0 0;
+ }
+ 
+ .form-control {   
+    padding: 20px 11px !important; 
+}
+
+.top_2
+{
+padding: 6px 102px !important;
+}
+
+
+
+.cursor1
+{
+	cursor:pointer;
+}
+ 
+ 
+ 
