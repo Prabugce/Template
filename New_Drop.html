@@ -16,14 +16,7 @@
 	 text-align:center;
 	 margin:10px 0 0 0;
  }
- .border
- {   
-	margin: 8px 0 0 20px;
-    border: 1px solid;
-    padding: 0px 8px;
-    width: 35%;
-	
- }
+ 
  
  #result
  {
@@ -59,6 +52,25 @@
     border-radius: 3px;
 }
 
+.table1
+{ 
+margin:0 0 0 30px;
+width:40%;
+text-transform:capitalize;
+border-collapse:collapse;
+
+}
+tr, td
+{
+border:1px solid;
+padding:0 20px !important;
+}
+
+tr:first-child
+{
+font-weight:bold;
+}
+
 </style>
 <link href="../Dropdown/Drop.css" rel="stylesheet">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -68,16 +80,10 @@
 
 <h2>Sort Employee Age in DropDown list</h2>
  <div class="text_center">
-	 <select style="margin:0 15px 0 0;" id="k1" onchange="check()">
-		<option>Select Age</option>
-	  <option get="25" value="Age > 25">Age > 25</option>
-	  <option get="30" value="Age < 30">Age < 30</option>
-	  <option get="40" value="Age > 40">Age > 40</option>
-	  <option get="45" value="Age < 45">Age < 45</option>
-	</select> 
+	  
 		
 	Please Enter Employee name <input type="text" id="k2"/>
-	<button type="button" onclick="getname()">Search</button>
+	<button type="button" id="search">Search</button>
  </div>
 
  
@@ -86,9 +92,9 @@
 			</div>
 			
  <div class="popup" id="error" style="display:none;">
-  <div class="wrapper" id="text2">
+	<div class="wrapper" id="text2">
        Employee name did't match in our List
-	   <div class="close1" onclick="close_pop_up()">Ok</div>
+	   <div class="close1">Ok</div>
     </div>
 </div>
 
@@ -105,128 +111,82 @@ var data1= [
 			{"id":"emp009","firstName":"Bala","age":"29","Department":"Police"},
 			{"id":"emp010","firstName":"Manoj","age":"46","Department":"Mechnical"}
 					];
-					
- var i,element;
- var input,input1,get_value;    var splits1;
- 
- function get_index()
-	  { 
-	   input = document.getElementById("k1").value;
-	
-	   var lis= document.querySelectorAll("#k1 option");
- 
-	   for(i=0;i<lis.length;i++)
-	   {
-			    input1= document.getElementsByTagName("option")[i];
-				if(input1.getAttribute("value")==input)
-				{
-				get_value= document.getElementsByTagName("option")[i].getAttribute("get"); 
-				} 
-			  
-		} 
-	  }
-	  
-function check()
-{  
-		get_index();
-		document.getElementById("error").style="display:none";
-		document.getElementById("result").innerHTML = ""; 
-		var inputs = document.getElementById("k1").value; 
-		for(var z=0;z<=inputs.length-1;z++)
-		{ 
-		
-		  if(inputs[z]== ">")
-		  { 
-				 fun1();
-				 return false;
-		  }
-		  else if(inputs[z]== "<")
-		  {  
-				fun2();
-				return false;
-		  } 
-		}
-		
-		 
-		 
-		   function fun1(){
-					for(i=0;i<data1.length;i++)
+var tables,trs;
+$(document).ready(function(){ 
+$("#search").on("click",function(){
+var values= $("#k2").val();
+		if(values!="")
+		{		 if(values[0]==values[0].toLowerCase())
 					{ 
-							
-							
-							if(data1[i].age>get_value)
-							{
-							    element = document.createElement("div");
-								element.className+=	"border";
-								element.appendChild(document.createTextNode("Employee ID :" + data1[i].age));
-								document.getElementById('result').appendChild(element);
-								
-							} 
-							 
+					 values[0]= values[0].toUpperCase();
+					 console.log(values[0]);
 					}
 					
-					 
-			}
-			 function fun2(valuess){
-					for(i=0;i<data1.length;i++)
-					{ 
-						 	
-							if(data1[i].age<get_value)
-							{
-							    element = document.createElement("div");
-								element.className+=	"border";
-								element.appendChild(document.createTextNode("Employee ID :" + data1[i].age));
-								document.getElementById('result').appendChild(element);
-								
-							} 
-							 
-					}
-					
-					 
-			} 	
-		 
-}
-
-function getname()
-{			var no= false;
-			document.getElementById("result").innerHTML = "";
-			var textbox= document.getElementById("k2").value;
-			
-			if(textbox!="")
-			{
-					 for(var s=0;s<data1.length;s++)
-					 {
-						if(data1[s].hasOwnProperty("firstName")&&(data1[s].firstName==textbox))
-						{
-										element = document.createElement("div");
-										element.className+=	"border";
-										element.appendChild(document.createTextNode("Employee ID :" + data1[s].ID +" "+ "Employee Age :" +  data1[s].Age+ " " + "Employee firstName :"+ data1[s].firstName));
-										document.getElementById('result').appendChild(element);
-								no= true; 
-						}
-						 
-					}
-				  
-				if(!no)
-				{ 
-				document.getElementById("error").style="display:block";
-				}
-			}
+				 console.log(values);
+				 
+				$("#result").text("");
+				tables="<table>";   
+				tables+="<tr>";
 				
-			else
-			{
-			document.getElementById("error").style="display:block";
-			var your_div= document.getElementById("text2");
-			var text_to_change = your_div.childNodes[0];
-			text_to_change.nodeValue = 'Please Enter Employee Name'; 
-			}
-}
+				
+				var keyss= Object.keys(data1[0]); 
+			
+				for(var j=0;j<keyss.length;j++)
+				{
+					tables += '<td>' + keyss[j] + '</td>';
+				}
+				tables+="</tr>";
+			
+				var calc=false;
+				for(var i=0;i<data1.length;i++)
+				{  
+						
+						var names= data1[i].firstName;  
+						
+					 if(names.indexOf(values)!=-1)
+					  {		 tables += '<tr>';
+							  tables += '<td>' + data1[i].id + '</td>';
+							  tables += '<td>' + data1[i].firstName + '</td>';
+							  tables += '<td>' + data1[i].age + '</td>';
+							  tables += '<td>' + data1[i].Department + '</td>';
+							  tables += "</tr>";
+							  calc=true;
+					  }
+				  
+				}
+					$("#result").append(tables);
+					$("table").addClass("table1");
+					
+				if(!calc)
+				{
+					var parentss1 = $('#text2').children();
+					$('#text2').text("Not Found data in our List").append(parentss1); 
+					$("#error").show();
+					$("table").hide();
+				}
+		}
 
-function close_pop_up()
-{
-document.getElementById("error").style="display:none";
-}
+		else
+		{
+			var parentss = $('#text2').children();
+			$('#text2').text("Please Enter Character").append(parentss); 
+			$("#error").show();
+		}
 
+});
+ 
+
+
+
+$(".popup").on("click",".close1",function(){
+$(".popup").hide();
+});
+ 
+
+
+
+
+});
 
   
 </script>
