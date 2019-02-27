@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+body
+{
+font-family:sans-serif;
+}
+table
+{
+width:60%;
+border:1px solid;
+border-collapse:collapse;
+}
+tr, td
+{
+border:1px solid;
+padding:5px;
+text-align:center;
+}
+td:odd
+{
+color:red;
+}
+
+tr:nth-child(1)
+{
+font-weight:bold;
+text-align:center;
+}
+#v1
+{
+padding:1% 2%;
+}
+
+</style>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<div class="container"> 
+  
+  <div class="form-inline">
+    <div class="form-group">
+      <label for="pwd">Search:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="Enter Search Character" name="pwd">
+    </div> 
+    <button type="submit" class="btn btn-default" onclick="sort1()">Submit</button>
+  </div>
+  <div id="v1"></div>
+</div>
+
+<script>
+var data= [{Empolyee_name:"Aravinth",Empolye_age:25,Empolye_id:"Emp_001",Empolyee_mail:"Aravinth001@gmail.com",Empolye_contact:9003495054},
+{Empolyee_name:"Ajith",Empolye_age:21,Empolye_id:"Emp_002",Empolyee_mail:"Ajith0012@gmail.com",Empolye_contact:980345054},
+{Empolyee_name:"Arun",Empolye_age:33,Empolye_id:"Emp_003",Empolyee_mail:"Arun002@gmail.com",Empolye_contact:970349054},
+{Empolyee_name:"Babu",Empolye_age:56,Empolye_id:"Emp_004",Empolyee_mail:"babu004@gmail.com",Empolye_contact:999349054},
+{Empolyee_name:"Balaji",Empolye_age:30,Empolye_id:"Emp_005",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:809395054},
+{Empolyee_name:"Balu",Empolye_age:23,Empolye_id:"Emp_006",Empolyee_mail:"balu004@gmail.com",Empolye_contact:709395054},
+{Empolyee_name:"c",Empolye_age:31,Empolye_id:"Emp_007",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:8309395054},
+{Empolyee_name:"c",Empolye_age:21,Empolye_id:"Emp_008",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:9309395054},
+{Empolyee_name:"c",Empolye_age:27,Empolye_id:"Emp_009",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:9109345054},
+{Empolyee_name:"c",Empolye_age:40,Empolye_id:"Emp_010",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:809395054},
+{Empolyee_name:"c",Empolye_age:33,Empolye_id:"Emp_011",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:709495054},
+{Empolyee_name:"c",Empolye_age:25,Empolye_id:"Emp_012",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:9703495054},
+{Empolyee_name:"c",Empolye_age:43,Empolye_id:"Emp_013",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:8793495054},
+{Empolyee_name:"c",Empolye_age:43,Empolye_id:"Emp_013",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:7093495054},
+{Empolyee_name:"c",Empolye_age:22,Empolye_id:"Emp_014",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:9093495054},
+{Empolyee_name:"c",Empolye_age:29,Empolye_id:"Emp_016",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:7093495054},
+
+];
+var thead_= ["Empolyee_Name","Empolyee_Age","Empolyee_ID","Empolyee_Mail","Empolyee_Contact"];
+
+var tr_head,text1,t_head_row1,values;
+var tables=document.createElement("table");
+var t_head=document.createElement("thead");
+var t_head_row= document.createElement("tr");
+
+
+for(var i=0;i<thead_.length;i++)
+{
+tr_head= document.createElement("td");  
+text1 =document.createTextNode(thead_[i]);
+tr_head.appendChild(text1);
+t_head_row.appendChild(tr_head);
+} 
+	tables.appendChild(t_head_row);
+	var boo= true;
+if(boo){ 
+		if(values!="")
+			{
+				 document.getElementById("v1").innerHTML="";
+			}
+			
+	function fun1(){
+		for(var j=0;j<data.length;j++)
+		{
+			
+			t_head_row1= document.createElement("tr"); 
+			
+			tr_head2= document.createElement("td"); 
+			tr_head3= document.createElement("td"); 
+			tr_head4= document.createElement("td"); 
+			tr_head5= document.createElement("td"); 
+			tr_head6= document.createElement("td"); 
+			
+			var text2 =document.createTextNode(data[j].Empolyee_name);
+			var text3 =document.createTextNode(data[j].Empolye_age);
+			var text4 =document.createTextNode(data[j].Empolye_id);
+			var text5 =document.createTextNode(data[j].Empolyee_mail);
+			var text6 =document.createTextNode(data[j].Empolye_contact);
+			
+			tr_head2.appendChild(text2);
+			tr_head3.appendChild(text3);
+			tr_head4.appendChild(text4);
+			tr_head5.appendChild(text5);
+			tr_head6.appendChild(text6);
+			
+			t_head_row1.appendChild(tr_head2);
+			t_head_row1.appendChild(tr_head3);
+			t_head_row1.appendChild(tr_head4);
+			t_head_row1.appendChild(tr_head5);
+			t_head_row1.appendChild(tr_head6);
+			tables.appendChild(t_head_row1);   
+		}
+			
+			
+		document.getElementById("v1").appendChild(tables);
+	 }
+	
+	 boo= false;
+	 fun1();
+ }
+ 
+function sort1(){
+if(values=="")
+{
+return false;
+}
+ values= document.getElementById("pwd").value.toLowerCase();  
+ fun1();
+}
+
+</script>
+
+</body>
+</html>
