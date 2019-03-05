@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+body
+{
+font-family:sans-serif;
+}
+thead th{
+text-align:center;
+}
+h2,tbody td{
+text-align:center;
+}
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+#myInput {
+padding: 0.25em;
+border: 2px solid;
+border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container"> 
+  <h2>Sort Employee Name</h2>
+  
+  <div class="row">
+  
+  <div class="col-md-1"></div>
+  
+  <div class="col-md-10">
+  <div class="form-inline"> 
+  <!--<input type="text" class="form-control" id="pwd" placeholder="Enter Search Character" name="pwd">-->
+ 
+ 
+<button id="disable" class='btn btn-primary' onclick="exportToPdf()" style="float:right"><i class='fa fa-download' aria-hidden='true' >&nbsp;PDF</i></button>
+<div id="tbl">
+</div>
+<!--<button type="submit" class="btn btn-default" onclick="sort1()">Submit</button>-->
+  </div>
+  
+  </div>
+  <div class="col-md-1"></div>
+  </div>
+  
+</div>
+
+<script>
+var data= [
+{Empolyee_name:"Aravinth",Empolye_age:25,Empolye_id:"Emp_001",Empolyee_mail:"aravinth001@gmail.com",Empolye_contact:9003495054},
+{Empolyee_name:"Ajith",Empolye_age:21,Empolye_id:"Emp_002",Empolyee_mail:"ajith0012@gmail.com",Empolye_contact:980345054},
+{Empolyee_name:"Arun",Empolye_age:33,Empolye_id:"Emp_003",Empolyee_mail:"arun002@gmail.com",Empolye_contact:970349054},
+{Empolyee_name:"Babu",Empolye_age:56,Empolye_id:"Emp_004",Empolyee_mail:"babu004@gmail.com",Empolye_contact:999349054},
+{Empolyee_name:"Balaji",Empolye_age:30,Empolye_id:"Emp_005",Empolyee_mail:"balaji004@gmail.com",Empolye_contact:809395054},
+{Empolyee_name:"Balu",Empolye_age:23,Empolye_id:"Emp_006",Empolyee_mail:"balu004@gmail.com",Empolye_contact:709395054},
+{Empolyee_name:"Ganesh",Empolye_age:31,Empolye_id:"Emp_007",Empolyee_mail:"ganesh004@gmail.com",Empolye_contact:8309395054},
+{Empolyee_name:"Hari",Empolye_age:21,Empolye_id:"Emp_008",Empolyee_mail:"hari004@gmail.com",Empolye_contact:9309395054},
+{Empolyee_name:"Raja",Empolye_age:27,Empolye_id:"Emp_009",Empolyee_mail:"raja@gmail.com",Empolye_contact:9109345054},
+{Empolyee_name:"Ravi",Empolye_age:40,Empolye_id:"Emp_010",Empolyee_mail:"ravi004@gmail.com",Empolye_contact:809395054},
+{Empolyee_name:"Sundar",Empolye_age:33,Empolye_id:"Emp_011",Empolyee_mail:"sundar004@gmail.com",Empolye_contact:709495054},
+{Empolyee_name:"Abishek",Empolye_age:25,Empolye_id:"Emp_012",Empolyee_mail:"abishek004@gmail.com",Empolye_contact:9703495054},
+{Empolyee_name:"Mani",Empolye_age:43,Empolye_id:"Emp_013",Empolyee_mail:"mani@gmail.com",Empolye_contact:8793495054},
+{Empolyee_name:"Suresh",Empolye_age:43,Empolye_id:"Emp_014",Empolyee_mail:"suresh@gmail.com",Empolye_contact:7093495054},
+{Empolyee_name:"Dinesh",Empolye_age:22,Empolye_id:"Emp_015",Empolyee_mail:"dinesh@gmail.com",Empolye_contact:9093495054},
+{Empolyee_name:"Sachin",Empolye_age:29,Empolye_id:"Emp_016",Empolyee_mail:"sachin@gmail.com",Empolye_contact:7093495054},
+];
+ 
+var table = document.createElement("table");
+table.setAttribute('class','table table-bordered');
+var tableHead = document.createElement("thead");
+table.appendChild(tableHead);
+table.setAttribute('id','testTable');
+var row = tableHead.insertRow(-1);
+
+//Add the header cells.
+var headerCell = document.createElement("TH");
+headerCell.innerHTML = "Check";
+row.appendChild(headerCell);
+headerCell = document.createElement("TH");
+headerCell.innerHTML = "Empolyee_Name";
+row.appendChild(headerCell);
+ 
+headerCell = document.createElement("TH");
+headerCell.innerHTML = "Empolyee_Age";
+row.appendChild(headerCell);
+ 
+headerCell = document.createElement("TH");
+headerCell.innerHTML = "Empolyee_ID";
+row.appendChild(headerCell);
+headerCell = document.createElement("TH");
+headerCell.innerHTML = "Empolyee_Mail";
+row.appendChild(headerCell);
+ 
+headerCell = document.createElement("TH");
+headerCell.innerHTML = "Empolyee_Contact";
+row.appendChild(headerCell);
+var tableBody = document.createElement("tbody");
+ 
+  
+for (var i = 0; i < data.length; i++) {
+//Add the data row.
+var row = tableBody.insertRow(-1);
+ 
+//Add the data cells.
+var cell = row.insertCell(-1);
+cell.innerHTML = '<input type="checkbox" name="vehicle1" value="Bike">';
+var cell = row.insertCell(-1);
+cell.innerHTML = data[i].Empolyee_name;
+ 
+cell = row.insertCell(-1);
+cell.innerHTML = data[i].Empolye_age;
+ 
+cell = row.insertCell(-1);
+cell.innerHTML = data[i].Empolye_id;
+cell = row.insertCell(-1);
+cell.innerHTML = data[i].Empolyee_mail;
+cell = row.insertCell(-1);
+cell.innerHTML = data[i].Empolye_contact;
+}
+table.appendChild(tableBody);
+var sampTbl = document.getElementById("tbl");
+sampTbl.innerHTML = "";
+sampTbl.appendChild(table);
+console.log(table);
+ 
+  var pdf,trs;
+function exportToPdf() { 
+var x = document.querySelectorAll("input"); 
+		
+         var style1 = document.createElement('table');
+		
+  		for(var i=0;i<x.length;i++)
+			{ 
+				
+				 
+				 
+					if(x[i].checked==true)
+					{
+						 pdf = new jsPDF();
+						 trs= testTable.rows[i+1];
+						var style2 = document.createElement('tr');	
+							
+						for(var j=1;j<trs.cells.length;j++)
+						{ 
+						var style3 = document.createElement('td');
+						
+						//style3.innerHTML= pdf.text(30, 30, trs.cells[j].innerHTML); 
+						
+						style3.innerHTML= trs.cells[j].innerHTML;  
+						style2.appendChild(style3);
+						
+						}
+						
+					style1.appendChild(style2);
+						
+					}
+				
+			}
+			
+			console.log(style1); 
+		
+}
+ 
+</script>
+
+</body>
+</html>
