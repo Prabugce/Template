@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
   
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -86,8 +87,6 @@ var row = tableHead.insertRow(-1);
 var headerCell = document.createElement("TH");
 headerCell.innerHTML = "Check";
 row.appendChild(headerCell);
-
-
 headerCell = document.createElement("TH");
 headerCell.innerHTML = "Empolyee_Name";
 row.appendChild(headerCell);
@@ -99,7 +98,6 @@ row.appendChild(headerCell);
 headerCell = document.createElement("TH");
 headerCell.innerHTML = "Empolyee_ID";
 row.appendChild(headerCell);
-
 headerCell = document.createElement("TH");
 headerCell.innerHTML = "Empolyee_Mail";
 row.appendChild(headerCell);
@@ -107,7 +105,6 @@ row.appendChild(headerCell);
 headerCell = document.createElement("TH");
 headerCell.innerHTML = "Empolyee_Contact";
 row.appendChild(headerCell);
-
 var tableBody = document.createElement("tbody");
  
   
@@ -118,7 +115,6 @@ var row = tableBody.insertRow(-1);
 //Add the data cells.
 var cell = row.insertCell(-1);
 cell.innerHTML = '<input type="checkbox" name="vehicle1" value="Bike">';
-
 var cell = row.insertCell(-1);
 cell.innerHTML = data[i].Empolyee_name;
  
@@ -136,25 +132,44 @@ table.appendChild(tableBody);
 var sampTbl = document.getElementById("tbl");
 sampTbl.innerHTML = "";
 sampTbl.appendChild(table);
-
-
-   function exportToPdf() {
-            html2canvas(document.getElementById('testTable'), {
+console.log(table);
+ 
+  var pdf,trs;
+function exportToPdf() { 
+var x = document.querySelectorAll("input"); 
+		
+         var style1 = document.createElement('table');
+		
+  		for(var i=0;i<x.length;i++)
+			{ 
+				
+				 
+				 
+					if(x[i].checked==true)
+					{
+						 pdf = new jsPDF();
+						 trs= testTable.rows[i+1];
+						var style2 = document.createElement('tr');	
+							
+						for(var j=1;j<trs.cells.length;j++)
+						{ 
+						var style3 = document.createElement('td');
+						
+						//style3.innerHTML= pdf.text(30, 30, trs.cells[j].innerHTML); 
+						
+						style3.innerHTML= trs.cells[j].innerHTML;  
+						style2.appendChild(style3);
+						
+						}
+						
+					style1.appendChild(style2);
+						
+					}
+				
+			}
 			
-                onrendered: function (canvas) {
-                    var data1 = canvas.toDataURL();
-                    var docDefinition = {
-                        body: [{
-                            text:"dddd",
-                            width: 500
-                        }]
-						  
-                    };
-					
-						  
-                    pdfMake.createPdf(docDefinition).download("Table.pdf");
-                }
-            });
+			console.log(style1); 
+		
 }
  
 </script>
