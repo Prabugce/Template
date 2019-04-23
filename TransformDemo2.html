@@ -1,0 +1,233 @@
+<html>
+    <head>
+        <title>Json Data</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./page.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    </head>
+  
+    <body> 
+        <div class="header"> 
+            <div class="projects1"> Projects:
+                    <select id="v1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                            
+            </div>
+
+            <div class="projects2"> Users:
+                <select id="v2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                        
+            </div>
+ 
+        </div>
+        <div id="demo">
+
+
+        </div>
+
+    </body>
+
+</html>
+
+<script>
+var data= {
+        "data1":{
+            "repo":[
+                {"aaa":["a1","a2","a3","a4","a5","a6"]},
+                {"bbb":["b1","b2","b3","b4","b5","b6"]},
+                {"ccc":["c1","c2","c3","c4","c5","c6"]},
+                {"ddd":["d1","d2","d3","d4","d5","d6"]},
+                {"eee":["e1","e2","e3","e4","e5","e6"]}
+            ]
+        }
+};
+ 
+var v1= document.getElementById("v1");
+var v2= v1.getElementsByTagName("option");
+
+for(var i=0;i<v2.length;i++)
+{ 
+v2[i].addEventListener("click",onchange2);
+v2[i].addEventListener("click",result);
+}
+
+var s1= document.getElementById("v2");
+var s2= s1.getElementsByTagName("option");
+
+for(var j=0;j<s2.length;j++)
+{
+s2[j].addEventListener("click",onchange1);
+s2[j].addEventListener("click",result);
+}
+
+var projects;
+var Users;
+
+function onchange2(event)
+{  
+    Users= event.target.value;
+}
+
+function onchange1(event)
+{ 
+    projects= event.target.value;
+
+}
+ 
+
+function result()
+{ 
+    document.getElementById("demo").innerHTML ="";
+
+    var tab= document.createElement("table");
+    
+   var tab1;
+   var tab2;
+   var datas2;
+   var tab11; 
+
+if(Users!=""&&projects!="")
+{
+     
+    for(var s=0;s<projects;s++)
+    {
+        tab1= document.createElement("tr");
+        tab2= document.createElement("td");
+        var datas=  Object.keys(data.data1.repo[s]);
+
+          datas2=  data.data1.repo[s];
+         tab2.innerText = Object.keys(datas2);
+ 
+     datas = datas.toString();
+        
+
+   for(var t =0; t< Users;t++) 
+        {   
+        if(datas=="aaa")
+        { 
+        var tab3= document.createElement("td");
+        tab3.innerText= data.data1.repo[s].aaa[t];
+        tab1.appendChild(tab3);
+        
+        }
+
+        if(datas=="bbb")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].bbb[t];
+            tab1.appendChild(tab3);
+            
+        }
+        if(datas=="ccc")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].ccc[t];
+            tab1.appendChild(tab3);
+            
+        }
+        if(datas=="ddd")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].ddd[t];
+            tab1.appendChild(tab3);
+            
+        }
+        if(datas=="eee")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].eee[t];
+            tab1.appendChild(tab3);
+            
+        }
+
+
+             
+        }
+    
+
+    
+        tab1.appendChild(tab2);     
+    tab.appendChild(tab1);
+    
+    
+   } 
+}
+
+   document.getElementById("demo").appendChild(tab);
+}
+
+ 
+ 
+var tab= document.createElement("table");
+
+for(var s=0;s<data.data1.repo.length;s++)
+{
+
+    var tab1= document.createElement("tr");
+
+    var datas=  Object.keys(data.data1.repo[s]);
+
+   var tab2= document.createElement("td");
+     
+    tab2.innerText = Object.keys(data.data1.repo[s]); 
+    datas.toString();
+    
+    tab1.appendChild(tab2);
+
+    for(var h=0;h<6;h++)
+    {   
+        
+       
+        if(datas=="aaa")
+        {
+            var tab3= document.createElement("td");
+        tab3.innerText= data.data1.repo[s].aaa[h];
+        tab1.appendChild(tab3);
+        }
+        if(datas=="bbb")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].bbb[h];
+            tab1.appendChild(tab3);
+        }
+        if(datas=="ccc")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].ccc[h];
+            tab1.appendChild(tab3);
+        }
+        if(datas=="ddd")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].ddd[h];
+            tab1.appendChild(tab3);
+        }
+        if(datas=="eee")
+        {
+            var tab3= document.createElement("td");
+            tab3.innerText= data.data1.repo[s].eee[h];
+            tab1.appendChild(tab3);
+        }
+    }
+
+    tab1.appendChild(tab3);
+   
+tab.appendChild(tab1);
+} 
+
+
+document.getElementById("demo").appendChild(tab);
+
+
+</script>
