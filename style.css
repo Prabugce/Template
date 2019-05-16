@@ -1,0 +1,56 @@
+.Text1
+{
+display: table;
+    position: relative;
+    width:100%;
+}
+
+.circle{
+ display: table-cell;
+
+}
+ 
+.btn1
+{
+border: 2px solid #1650D2;
+background-color: white ;
+color: #59698D !important;
+border-radius: 50%;
+padding:17px;
+margin: 0 74px 0 0;
+}
+
+.Text1::before {
+position: absolute;
+background-color: #1650D2;
+content: "";
+height: 2px;
+width: 80%;
+margin: 9px 0 0 0;
+z-index: -1;
+}
+
+.green1
+{
+    color: green;
+}
+
+.container
+{
+    width: 100%;
+    text-align: left;
+    padding: 7px 0 0 0;
+}
+
+.form-group
+{
+    text-align: left;
+}
+
+input
+{
+width: 235px;
+padding: 5px;
+margin: 10px 0 9px 0;
+}
+
