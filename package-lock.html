@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <body>
+
+
+
+<script>
+  var a= "abcdefghijklmnopqrstuvwxyz";
+  var count= 0;
+  
+  function add(s)
+  { 
+  s.trim();
+  s= s.toLowerCase();
+  s= s.split("");
+  a= a.split("");
+  
+  for (var i=0;i<a.length;i++)
+  {
+      count =0;
+              for (var j=i;j<s.length;j++)
+              {
+                      
+                              if(a[i]==s[j])
+                              
+                              {   
+                                      console.log(s[j]);
+                                      count++;
+                              }
+                              else if(s.length-1==j)
+                              {
+                                      if( count > 0)
+                                      {
+                                          console.log("HI Ok");
+                                      }
+                                      else
+                                      {
+                                          console.log(s[j]+ "Not found");
+                                      }
+                              }
+  
+              }
+           
+  }
+   
+  
+  }
+
+  add("Hi i am prabu");
+  
+  </script>
+
+    </body>
+  </head>
+</html>
