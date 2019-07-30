@@ -1,0 +1,31 @@
+
+var input1= "sssghhssr";
+var str= "";
+var input = input1.split("");
+
+for (var i=0; i< input.length;i++)
+{
+
+        if (input.length-1==i)
+        {
+			str+= input[i];
+        }
+		else if (input[i]!=input[i+1])
+        {
+				if(input[i] !== undefined)
+				{
+					console.log(input[i]);
+					 str+= input[i];
+					 console.log(str)
+				} 
+			
+        }
+		 
+		else
+        {
+				  delete input[i] ;
+				  delete input[i+1];
+				
+        }
+	}
+	console.log(str);
