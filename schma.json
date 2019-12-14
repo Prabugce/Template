@@ -58,7 +58,33 @@
         "text": "FIR-07_PROXY_P2000-06_21_2019",
         "profileUrl": "",
         "profilecount": "",
-        "positionName": ""
+        "positionName": "",
+        "children": [
+            {
+              "imageName": "M200",
+              "imageUrl": "",
+              "name": "00:0B:C2:12:BD:0F",
+              "us": "0",
+              "ds": "0",
+              "mac": "142.223.155.249",
+              "text": "FIR-07_PROXY_P2000-06_21_2019",
+              "profileUrl": "",
+              "profilecount": "",
+              "positionName": ""
+            },
+            {
+              "imageName": "M200",
+              "imageUrl": "",
+              "name": "00:0B:C2:12:BD:0F",
+              "us": "0",
+              "ds": "0",
+              "mac": "142.223.155.249",
+              "text": "FIR-07_PROXY_P2000-06_21_2019",
+              "profileUrl": "",
+              "profilecount": "",
+              "positionName": ""
+            }
+          ]
       }
     ]
   }
