@@ -35,7 +35,7 @@
         "upspeed": "1.8mbps",
         "upspeedimg": "1.8mbps",
         "downspeed": "2 mbps",
-        "downspeedimg": "2 mbps",
+        "downspeedimg": "2 mbps"
        },
        {
         "imageName": "M200",
@@ -54,7 +54,7 @@
         "upspeed": "1.8mbps",
         "upspeedimg": "1.8mbps",
         "downspeed": "2 mbps",
-        "downspeedimg": "2 mbps",
+        "downspeedimg": "2 mbps"
        }
     ]
 }
