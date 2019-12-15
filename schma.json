@@ -17,7 +17,7 @@
      "upspeed": "1.8mbps",
      "upspeedimg": "1.8mbps",
      "downspeed": "2 mbps",
-     config: "Configuration 3.012.tgz",
+     "config": "Configuration 3.012.tgz",
      "downspeedimg": "2 mbps",
      "children": [
        {
@@ -38,7 +38,7 @@
         "upspeed": "1.8mbps",
         "upspeedimg": "1.8mbps",
         "downspeed": "2 mbps",
-         config: "Configuration 3.012.tgz",
+         "config": "Configuration 3.012.tgz",
         "downspeedimg": "2 mbps"
        },
        {
@@ -60,6 +60,7 @@
         "upspeed": "1.8mbps",
         "upspeedimg": "1.8mbps",
         "downspeed": "2 mbps",
+            "config": "Configuration 3.012.tgz",
         "downspeedimg": "2 mbps",
                "children": [
        {
@@ -78,6 +79,7 @@
         "profileUrl": "",
         "profilecount": "",
         "positionName": "",
+            "config": "Configuration 3.012.tgz",
         "upspeed": "1.8mbps",
         "upspeedimg": "1.8mbps",
         "downspeed": "2 mbps",
@@ -98,6 +100,7 @@
         "text": "FIR-07_PROXY_P2000-06_21_2019",
         "profileUrl": "",
         "profilecount": "",
+            "config": "Configuration 3.012.tgz",
         "positionName": "",
         "upspeed": "1.8mbps",
         "upspeedimg": "1.8mbps",
