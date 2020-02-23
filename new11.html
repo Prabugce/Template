@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<body ONLOAD = 'ConfigPolicy(2)'>
+
+<h2>JavaScript Convert Binary to Decimal</h2>
+
+<p id="demo"></p>
+
+ <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="label2" width="160">Username</td>
+            <td class="label2">
+              <input type="TEXT" name="username" id="username" size="25" maxlength="24" value="">
+            </td>
+
+          </tr>
+          <tr>
+            <td width="147" class="label2">Password</td>
+            <td class="label2">
+			<input type="text" onkeyup="CheckPasspolicy(2)" emweb_type=PASSWORD id="userpwd"  name="userpwd" emweb_type=PASSWORD size="25" value="" EMWEB_TYPE=PASSWORD>        
+            </td>
+          </tr>
+          <tr>
+            <td width="147" class="label2">Confirm password</td>
+            <td class="label2">
+              <input type="Password" name="pwdconfirm" id="pwdconfirm" emweb_type=PASSWORD autocomplete="off" size="25" value="" EMWEB_TYPE=PASSWORD>
+            </td>
+          </tr>
+
+</table>
+
+
+<TR>
+ <TD ALIGN=left><INPUT id="ConfigLength" TYPE="hidden" NAME="err_validpass" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+</TR>
+
+<TR>
+ <TD ALIGN=left><INPUT id="Upperlength" TYPE="hidden" value="0" NAME="uppervalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+</TR>
+
+<TR>
+ <TD ALIGN=left><INPUT id="LowerLength" TYPE="hidden"  value="4" NAME="lowervalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+</TR>
+
+<TR>
+ <TD ALIGN=left><INPUT id="DigitsLength" TYPE="hidden"  value="0" NAME="digitvalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+</TR>
+<TR>
+ <TD ALIGN=left><INPUT id="SpecialCaseLength" TYPE="hidden"  value="0" NAME="specialvalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+</TR>
+
+
+</body>
+</html>
+<script src="test.js"></script>
