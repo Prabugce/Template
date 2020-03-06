@@ -1,0 +1,323 @@
+<HTML>
+    <HEAD> 
+       <TITLE>Creating SNMP V3 User</TITLE>
+     
+    
+    <style>
+    .symbol1
+    {
+    padding-right:35px;
+    font-size:17px;
+    }
+    .symbol2
+    {
+    padding-right:35px;
+    font-size:17px;
+    }
+    
+    </style>
+    <script language="javascript" src="New.js"></script>
+    <script>
+    var check1=true;
+    var cls1=true;
+    var cls2=true;
+    var correct= "&#10004;";
+    var level2=true;
+
+    
+function ShowPasswordFields(pass){
+ 	var field1 = document.getElementById("listVal").value;
+	var field2 = document.getElementById("listVal1").value;
+	
+	if(field1=="None" && field2=="None")
+	{
+		document.getElementById("errorcontent").style.display="none";
+    }
+	
+	if(pass==1)
+	{
+		  if(field1 == "None"){ 
+
+      document.getElementById('userpwd').style.display="none";
+ 
+			var syme1 = document.getElementsByClassName("symbol1");
+    
+			for (var j=0;j<syme1.length;j++)
+			{
+				syme1[j].innerHTML=correct;
+				syme1[j].style.display="none"; 
+				syme1[j].style.color="black";
+				
+			}
+			if(field2!="None" && field1=="None")
+			{
+				var t = document.getElementsByClassName("gray");
+					for (var i=0;i<t.length;i++)
+					{
+						if(t[i].style.color=="red")
+						{
+							if(t[i].getElementsByClassName("symbol2")[0].innerHTML=="✔" && t[i].getElementsByClassName("symbol2")[0].style.color=="")
+							{ 
+								t[i].style.color="red";
+								t[i].getElementsByClassName("symbol2")[0].style.color="red";
+							}
+							
+							if(t[i].getElementsByClassName("symbol2")[0].innerHTML=="✔" && t[i].getElementsByClassName("symbol2")[0].style.color=="green")
+							{ 
+								t[i].style.color="red";
+								t[i].getElementsByClassName("symbol2")[0].style.color="green";
+							}
+						}
+						
+
+
+					}
+			}
+			
+			if(field2!="None" && field1!="None")
+			{
+				var t = document.getElementsByClassName("gray");
+					for (var i=0;i<t.length;i++)
+					{
+						if((t[i].style.color=="red" || t[i].style.color=="green") && t[i].style.display=="block")
+						{
+							if(t[i].getElementsByClassName("symbol2")[0].style.color=="red" || t[i].getElementsByClassName("symbol2")[0].style.color=="black")
+							{ 
+								console.log(t[i].getElementsByClassName("symbol2")[0].style.color);
+								
+								t[i].style.color="red";
+								t[i].getElementsByClassName("symbol2")[0].style.color="red";
+							}
+							
+							if(t[i].getElementsByClassName("symbol2")[0].style.color=="green")
+							{ 
+								t[i].style.color="red";
+								t[i].getElementsByClassName("symbol2")[0].style.color="green";
+							}
+							if(t[i].getElementsByClassName("symbol2")[0].style.color=="green" && t[i].getElementsByClassName("symbol1")[0].style.color=="green")
+							{
+								t[i].style.color="green";
+							}
+							 
+						}
+
+
+					}
+			}
+			
+			
+			
+		  }
+		  else 
+		  {
+          document.getElementById('userpwd').style.display="block";
+			 
+			var syme1 = document.getElementsByClassName("symbol1"); 
+				
+				document.getElementById("errorcontent").style.display="block";
+ 				
+				for (var j=0;j<syme1.length;j++)
+				{
+					syme1[j].style.display="inline"; 
+					syme1[j].style.color="black";
+					syme1[j].innerHTML=correct;
+				}
+				
+				document.getElementById('userpwd').value="";
+				document.getElementById('auth_pwd_cfrm').value="";
+				
+		  }
+	}
+	else
+	{
+		 
+		if(field2 == "None"){
+			document.getElementById('userpwd1').style.display="none";
+			//priv_box.className = "invisible";
+ 
+			var syme2 = document.getElementsByClassName("symbol2");
+		 
+			for (var j=0;j<syme2.length;j++)
+			{
+				syme2[j].style.display="none"; 
+				syme2[j].style.color="black";
+			}
+			
+			if(field1!="None" && field2=="None")
+			{
+				var t = document.getElementsByClassName("gray");
+					for (var i=0;i<t.length;i++)
+					{
+						if(t[i].style.color=="red")
+						{
+							if(t[i].getElementsByClassName("symbol1")[0].innerHTML=="✔" && t[i].getElementsByClassName("symbol1")[0].style.color=="")
+							{ 
+							t[i].style.color="red";
+							t[i].getElementsByClassName("symbol1")[0].style.color="red";
+							}
+							if(t[i].getElementsByClassName("symbol1")[0].innerHTML=="✔" && t[i].getElementsByClassName("symbol1")[0].style.color=="green")
+							{ 
+							t[i].style.color="green";
+							t[i].getElementsByClassName("symbol2")[0].style.color="green";
+							}
+						}
+
+
+					}
+			}
+		
+	  }else
+		{
+			//priv_box.className = "";
+            
+            document.getElementById('userpwd1').style.display="block";
+
+			var field1 = document.getElementById("listVal").value;
+			var field2 = document.getElementById("listVal1").value;
+	 
+			var syme2 = document.getElementsByClassName("symbol2");
+			var syme1 = document.getElementsByClassName("symbol1");
+			
+			document.getElementById("errorcontent").style.display="block";
+ 
+			
+			for (var j=0;j<syme2.length;j++)
+			{
+				syme2[j].style.display="inline"; 
+				syme2[j].style.color="black";
+				syme2[j].innerHTML=correct;
+			}
+ 			document.getElementById('userpwd1').value="";
+			document.getElementById('priv_pwd_cfrm').value="";
+			
+			if(field2!="None" && field1!="None")
+			{
+				var t = document.getElementsByClassName("gray");
+					for (var i=0;i<t.length;i++)
+					{
+						if((t[i].style.color=="red" || t[i].style.color=="green") && t[i].style.display=="block")
+						{
+							if(t[i].getElementsByClassName("symbol2")[0].style.color=="red" || t[i].getElementsByClassName("symbol2")[0].style.color=="black")
+							{ 
+								console.log(t[i].getElementsByClassName("symbol2")[0].style.color);
+								
+								t[i].style.color="red";
+								t[i].getElementsByClassName("symbol2")[0].style.color="red";
+							}
+							
+							if(t[i].getElementsByClassName("symbol2")[0].style.color=="green")
+							{ 
+								t[i].style.color="red";
+								t[i].getElementsByClassName("symbol2")[0].style.color="green";
+							}
+							if(t[i].getElementsByClassName("symbol2")[0].style.color=="green" && t[i].getElementsByClassName("symbol1")[0].style.color=="green")
+							{
+								t[i].style.color="green";
+							}
+							 
+						}
+
+
+					}
+			}
+			
+			if(field1=="None" && field1!="None")
+			{
+				alert("Please select Authentication Protocol");
+				return false;
+			}
+	 
+	 
+		}
+	}
+ 
+ 
+ 
+}
+    </script>
+</HEAD>
+    <body onload="ConfigPolicy(3)">
+    <input type="TEXT" value="username" id="username" onkeyup="UserNameCheck()" name="v3user_name" SIZE=20 MAXLENGTH=31>
+<br/>
+
+    <select id="listVal" name="auth_proto" size="1" onchange="ShowPasswordFields(1);">
+        <option value="None">None</option>
+        <option value="HmacMd5" >value1</option>
+        <option value="HmacSha" selected>value2</option>
+    </select>
+
+    <br/>
+ 
+    <option>auth policy</option>
+    <input  type="Password" onkeyup="CheckPasspolicy(3)" name="auth_pwd" id="userpwd" autocomplete="off" SIZE=35 MAXLENGTH=31 EMWEB_TYPE=PASSWORD>
+    <br/>
+    <input  type="Password" id="auth_pwd_cfrm" name="auth_pwd_cfrm" autocomplete="off" SIZE=35 MAXLENGTH=31 EMWEB_TYPE=PASSWORD>
+    <input  type="Password" id="pwdconfirm" name="auth_pwd_cfrm" autocomplete="off" SIZE=35 MAXLENGTH=31 EMWEB_TYPE=PASSWORD>
+    <br/>
+
+    <select id="listVal1" name="priv_proto" size="1" onchange="ShowPasswordFields(2);">
+        <option value="None">None</option>
+        <option value="Des" >value1</option>
+        <option value="AesCfb128" selected>value2</option>
+    </select>
+    <br/>
+    <option>Protocol policy</option>
+<input type="Password" onkeyup="CheckPasspolicy(31,event)" name="priv_pwd"  id="userpwd1" autocomplete="off" SIZE=35 MAXLENGTH=31 EMWEB_TYPE=PASSWORD>
+<br/>
+<input type="Password" id="priv_pwd_cfrm" name="priv_pwd_cfrm" autocomplete="off" SIZE=35 MAXLENGTH=31 EMWEB_TYPE=PASSWORD>
+
+
+
+<table>
+<TR>
+    <TD ALIGN=left><INPUT id="ConfigLength" TYPE="hidden" NAME="err_validpass" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+    
+   
+   <TR>
+    <TD ALIGN=left><INPUT id="minlength1" TYPE="hidden" NAME="minimumvalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+   
+   
+   <TR>
+    <TD ALIGN=left><INPUT value="1" id="Upperlength" TYPE="hidden" NAME="uppervalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+   
+   <TR>
+    <TD ALIGN=left><INPUT value="1" id="LowerLength" TYPE="hidden" NAME="lowervalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+   
+   <TR>
+    <TD ALIGN=left><INPUT value="1" id="DigitsLength" TYPE="hidden" NAME="digitvalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+   <TR>
+    <TD ALIGN=left><INPUT value="1" id="SpecialCaseLength" TYPE="hidden" NAME="specialvalue" SIZE="512" MAXLENGTH="511" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+   
+   
+   
+   <TR>
+    <TD ALIGN=left><INPUT TYPE="hidden" NAME="err_msg" SIZE="512" MAXLENGTH="511" ></TD>
+   </TR>
+   <TR>
+    <TD ALIGN=left><INPUT TYPE="hidden" NAME="info_flag" SIZE="16" MAXLENGTH="15" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+   
+   <TR>
+    <TD ALIGN=left><INPUT TYPE="hidden" NAME="info_msg" SIZE="512" MAXLENGTH="511" ></TD>
+   </TR>
+   <TR>
+    <TD ALIGN=left><INPUT TYPE="hidden" NAME="buttonClicked" SIZE="16" MAXLENGTH="15" EMWEB_TYPE=DECIMAL_UINT></TD>
+   </TR>
+</table>
+   
+<div id="errorcontent">
+   
+   </div>
+
+   
+
+            
+</body>
+</HTML>
+
